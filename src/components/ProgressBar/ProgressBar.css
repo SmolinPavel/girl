@@ -1,0 +1,12 @@
+
+.progress-line-bg {
+    height: 10px;
+    display: block;
+    width: 100%;
+    max-width: 1180px;
+    background-color: rgb(234, 234, 234);
+    border-radius: 3px;
+    margin: 0 auto 10px auto;
+    overflow: hidden;
+
+}

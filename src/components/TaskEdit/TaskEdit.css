@@ -1,0 +1,35 @@
+.task-edit {
+    display: flex;
+    flex-direction: column;
+}
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 15px;
+}
+.task-description[placeholder]{
+    font-family: Roboto, sans-serif;
+    color: #9f9f9f;
+    font-style: italic;
+}
+.task-description {
+    margin-top: 20px;
+    width: 800px;
+    margin-right: 10px;
+    height: 300px;
+    padding: 15px 10px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    resize: none;
+}
+.edit-task-title {
+    width: 300px;
+    border: 1px solid black;
+    font-size: 20px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+}

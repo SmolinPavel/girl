@@ -1,0 +1,15 @@
+.wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.app-logo-filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 10px;
+}
+.categories-tasks {
+  display: flex;
+  justify-content: space-between;
+}
