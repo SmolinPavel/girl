@@ -13,8 +13,10 @@ class CategoriesTree extends React.Component {
                 {
                     categories.map((categoryItem) => {
                         return (
-                            <CategoryItem categoryItem={categoryItem}
-                                          key={Math.random()}
+                            <CategoryItem
+                                categoryItem={categoryItem}
+                                key={Math.random()}
+                                active={this.props.activeCategoryId ==  categoryItem.id}
                             />
                         );
                     })

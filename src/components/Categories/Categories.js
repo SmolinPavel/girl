@@ -9,7 +9,7 @@ export default class Categories extends React.Component {
         return (
             <div className="categories">
                 <CategoryAdding />
-                <CategoriesTree />
+                <CategoriesTree activeCategoryId={this.props.activeCategoryId} />
             </div>
         );
     }

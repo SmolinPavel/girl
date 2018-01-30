@@ -9,7 +9,7 @@ import Tasks from "../Tasks/Tasks";
 
 class App extends React.Component {
     render() {
-        const { activeCategoryId } = this.props;
+        const activeCategoryId = this.props.match.params.categoryId ? this.props.match.params.categoryId : this.props.activeCategoryId;
 
         return (
             <div className="App wrapper">
@@ -19,7 +19,7 @@ class App extends React.Component {
                 </div>
                 <ProgressBar />
                 <div className="categories-tasks">
-                    <Categories />
+                    <Categories activeCategoryId={activeCategoryId} />
                     {
                         activeCategoryId && <Tasks />
                     }

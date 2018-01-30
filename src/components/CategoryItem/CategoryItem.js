@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import './CategoryItem.css';
 import {
@@ -23,12 +24,13 @@ class CategoryItem extends React.Component {
     }
 
     render() {
-        const { title, active, id } = this.props.categoryItem;
+        const { title, id } = this.props.categoryItem;
+        const active = this.props.active;
 
         return (
             <div className={`category-item ${active ? 'active-category' : ''}`}>
                 <div className='category-name-and-edit' onClick={this.onCategoryClick.bind(this, id)}>
-                    <div data-title={title} className='category-name'>{title}</div>
+                    <Link to={`/categories/${id}`} data-title={title} className='category-name'>{title}</Link>
                     <button className='category-options-btn'>
                         <i onClick={this.onEditBtnClick} className='fa fa-edit'></i>
                     </button>
