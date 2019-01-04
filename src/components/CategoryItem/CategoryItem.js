@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -10,26 +10,27 @@ import {
     calculateCompletedCategories
 } from '../../actions';
 
-class CategoryItem extends React.Component {
+class CategoryItem extends Component {
     onDeleteBtnClick = () => {
-        const categoryId = this.props.categoryItem.id;
+        const { categoryItem: { id: categoryId }, dispatch } = this.props;
 
-        this.props.dispatch(deleteCategory(categoryId));
-        this.props.dispatch(calculateCompletedCategories());
+        dispatch(deleteCategory(categoryId));
+        dispatch(calculateCompletedCategories());
     }
 
-    onCategoryClick(id) {
-        this.props.dispatch(activateCategory(id));
-        this.props.dispatch(showCategoryTaskList(id));
+    onCategoryClick = id => {
+        const { dispatch } = this.props;
+        dispatch(activateCategory(id));
+        dispatch(showCategoryTaskList(id));
     }
 
     render() {
-        const { title, id } = this.props.categoryItem;
-        const active = this.props.active;
+        const { active, categoryItem } = this.props;
+        const { title, id } = categoryItem;
 
         return (
             <div className={`category-item ${active ? 'active-category' : ''}`}>
-                <div className='category-name-and-edit' onClick={this.onCategoryClick.bind(this, id)}>
+                <div className='category-name-and-edit' onClick={this.onCategoryClick(id)}>
                     <Link to={`/categories/${id}`} data-title={title} className='category-name'>{title}</Link>
                     <button className='category-options-btn'>
                         <i onClick={this.onEditBtnClick} className='fa fa-edit'></i>
@@ -42,9 +43,6 @@ class CategoryItem extends React.Component {
                     <button className='category-options-btn'>
                         <i className='fa fa-plus'></i>
                     </button>
-                    {/*<button className='change-category-btn'>*/}
-                        {/*<i className='fa fa-mail-reply'></i>*/}
-                    {/*</button>*/}
                 </div>
             </div>
         );

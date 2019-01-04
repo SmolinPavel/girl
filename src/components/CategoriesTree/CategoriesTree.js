@@ -4,32 +4,22 @@ import { connect } from 'react-redux';
 import './CategoriesTree.css';
 import CategoryItem from '../CategoryItem/CategoryItem';
 
-class CategoriesTree extends React.Component {
-    render() {
-        const { categories } = this.props;
+const CategoriesTree = ({ activeCategoryId, categories }) => (
+    <div className="categories-tree">
+        {
+            categories.map(categoryItem => (
+                <CategoryItem
+                    categoryItem={categoryItem}
+                    key={categoryItem.id}
+                    active={activeCategoryId === categoryItem.id}
+                />
+            ))
+        }
+    </div>
+);
 
-        return (
-            <div className="categories-tree">
-                {
-                    categories.map((categoryItem) => {
-                        return (
-                            <CategoryItem
-                                categoryItem={categoryItem}
-                                key={Math.random()}
-                                active={this.props.activeCategoryId ==  categoryItem.id}
-                            />
-                        );
-                    })
-                }
-            </div>
-        );
-    }
-}
-
-const mapStateToProps = (state) => {
-    return {
-        categories: state.categories.categoryList,
-    }
-};
+const mapStateToProps = ({ categories }) => ({
+    categories: categories.categoryList,
+});
 
 export default connect(mapStateToProps)(CategoriesTree)
